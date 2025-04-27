@@ -17,7 +17,7 @@ def load_model():
         hf_token = st.secrets["huggingface"]["token"]
         
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        st.info(f"Using device: {device}") # 使用デバイスを表示
+        st.sidebar.info(f"Using device: {device}") # 使用デバイスを表示
         pipe = pipeline(
             "text-generation",
             model=MODEL_NAME,
