@@ -87,7 +87,10 @@ def train_model(sample_data, preprocessor):
     model = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("classifier", RandomForestClassifier(n_estimators=80, random_state=42, max_depth=3)),
+            (
+                "classifier",
+                RandomForestClassifier(n_estimators=80, random_state=42, max_depth=3),
+            ),
         ]
     )
 
