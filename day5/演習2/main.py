@@ -156,7 +156,7 @@ class ModelTester:
     def train_model(X_train, y_train, model_params=None):
         """モデルを学習する"""
         if model_params is None:
-            model_params = {"n_estimators": 100, "random_state": 42}
+            model_params = {"n_estimators": 80, "learning_rate": 0.1, "max_depth": 3 ,"random_state": 42}
 
         # 前処理パイプラインを作成
         preprocessor = ModelTester.create_preprocessing_pipeline()
