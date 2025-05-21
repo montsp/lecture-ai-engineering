@@ -87,7 +87,7 @@ def train_model(sample_data, preprocessor):
     model = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("classifier", RandomForestClassifier(n_estimators=100, random_state=42)),
+            ("classifier", RandomForestClassifier(n_estimators=80, random_state=42, max_depth=3)),
         ]
     )
 
@@ -119,6 +119,7 @@ def test_model_accuracy(train_model):
 
     # Titanicデータセットでは0.75以上の精度が一般的に良いとされる
     assert accuracy >= 0.75, f"モデルの精度が低すぎます: {accuracy}"
+    print(f"accuracy:{accuracy}")
 
 
 def test_model_inference_time(train_model):
@@ -134,6 +135,7 @@ def test_model_inference_time(train_model):
 
     # 推論時間が1秒未満であることを確認
     assert inference_time < 1.0, f"推論時間が長すぎます: {inference_time}秒"
+    print(f"interface_time:{inference_time}")
 
 
 def test_model_reproducibility(sample_data, preprocessor):
