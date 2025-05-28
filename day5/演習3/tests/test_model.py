@@ -148,7 +148,6 @@ def test_model_inference_time(train_model):
 
     # 推論時間が1秒未満であることを確認
     assert inference_time < 1.0, f"推論時間が長すぎます: {inference_time}秒"
-    print(f"モデルの推論時間:{inference_time}")
 
     os.makedirs(REPORT_VALUES_DIR, exist_ok=True)
     with open(INFERENCE_TIME_REPORT_PATH, "w") as f:
