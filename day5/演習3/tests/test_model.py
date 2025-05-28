@@ -17,6 +17,12 @@ DATA_PATH = os.path.join(os.path.dirname(__file__), "../data/Titanic.csv")
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "../models")
 MODEL_PATH = os.path.join(MODEL_DIR, "titanic_model.pkl")
 
+REPORT_VALUES_DIR = "test_results"
+ACCURACY_REPORT_PATH = os.path.join(REPORT_VALUES_DIR, "accuracy_report.txt")
+INFERENCE_TIME_REPORT_PATH = os.path.join(
+    REPORT_VALUES_DIR, "inference_time_report.txt"
+)
+
 
 @pytest.fixture
 def sample_data():
@@ -124,6 +130,10 @@ def test_model_accuracy(train_model):
     assert accuracy >= 0.75, f"モデルの精度が低すぎます: {accuracy}"
     print(f"モデルの精度:{accuracy}")
 
+    os.makedirs(REPORT_VALUES_DIR, exist_ok=True)
+    with open(ACCURACY_REPORT_PATH, "w") as f:
+        f.write(str(accuracy))
+
 
 def test_model_inference_time(train_model):
     """モデルの推論時間を検証"""
@@ -139,6 +149,10 @@ def test_model_inference_time(train_model):
     # 推論時間が1秒未満であることを確認
     assert inference_time < 1.0, f"推論時間が長すぎます: {inference_time}秒"
     print(f"モデルの推論時間:{inference_time}")
+
+    os.makedirs(REPORT_VALUES_DIR, exist_ok=True)
+    with open(INFERENCE_TIME_REPORT_PATH, "w") as f:
+        f.write(str(inference_time))
 
 
 def test_model_reproducibility(sample_data, preprocessor):
