@@ -32,10 +32,35 @@ jobs:
       run: |
         black --check day5/演習3
         
-    - name: Run data tests
-      run: |
-        pytest day5/演習3/tests/test_data.py -v
+    #- name: Run data tests
+      #run: |
+        #pytest day5/演習3/tests/test_data.py -v
         
-    - name: Run model tests
+    #- name: Run model tests
+      #run: |
+        #pytest day5/演習3/tests/test_model.py -v -s
+
+    - name: Run Pytest
+      run: pytest
+
+    - name: Generate Summary from Pytest Report
+      run: python .github/scripts/generate_pytest_summary.py
+      working-directory: ${{ github.workspace }}
+      env:
+        GITHUB_STEP_SUMMARY: ${{ env.GITHUB_STEP_SUMMARY }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_RUN_ID: ${{ github.run_id }}
+
+    - name: Clean up generated files
+      if: always()
       run: |
-        pytest day5/演習3/tests/test_model.py -v -s
+        if [ -f models/titanic_model.pkl ]; then
+          rm models/titanic_model.pkl
+        fi
+        if [ -f report.json ]; then
+          rm report.json
+        fi
+        if [ -d test_results ]; then
+          rm -rf test_results
+        fi
+      shell: bash
