@@ -19,7 +19,9 @@ MODEL_PATH = os.path.join(MODEL_DIR, "titanic_model.pkl")
 
 REPORT_VALUES_DIR = "test_results"
 ACCURACY_REPORT_PATH = os.path.join(REPORT_VALUES_DIR, "accuracy_report.txt")
-INFERENCE_TIME_REPORT_PATH = os.path.join(REPORT_VALUES_DIR, "inference_time_report.txt")
+INFERENCE_TIME_REPORT_PATH = os.path.join(
+    REPORT_VALUES_DIR, "inference_time_report.txt"
+)
 
 
 @pytest.fixture
@@ -129,7 +131,7 @@ def test_model_accuracy(train_model):
     print(f"モデルの精度:{accuracy}")
 
     os.makedirs(REPORT_VALUES_DIR, exist_ok=True)
-    with open(ACCURACY_REPORT_PATH, 'w') as f:
+    with open(ACCURACY_REPORT_PATH, "w") as f:
         f.write(str(accuracy))
 
 
@@ -149,7 +151,7 @@ def test_model_inference_time(train_model):
     print(f"モデルの推論時間:{inference_time}")
 
     os.makedirs(REPORT_VALUES_DIR, exist_ok=True)
-    with open(INFERENCE_TIME_REPORT_PATH, 'w') as f:
+    with open(INFERENCE_TIME_REPORT_PATH, "w") as f:
         f.write(str(inference_time))
 
 
