@@ -78,10 +78,6 @@ def generate_pytest_summary():
 
 | メトリクス | 数値 |
 | :--------- | :--- |
-| **総テスト数** | {total_tests} |
-| **成功** | {passed_tests} |
-| **失敗** | {failed_tests} |
-| **スキップ** | {skipped_tests} |
 | **実行時間** | {test_duration:.2f} s |
 | **モデル精度** | {accuracy_value} |
 | **推論時間** | {inference_time_value} |
