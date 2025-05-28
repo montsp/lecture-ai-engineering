@@ -1,0 +1,1 @@
+{"created": 1748409021.648067, "duration": 0.01955699920654297, "exitcode": 4, "root": "/Users/montap/Desktop/AIE2025/day5/\u6f14\u7fd23", "environment": {}, "summary": {"total": 0, "collected": 0}, "collectors": [{"nodeid": "", "outcome": "passed", "result": [{"nodeid": "tests", "type": "Dir"}]}], "tests": []}
